@@ -1,0 +1,10 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<litepal>
+    <dbname value="Schedule"></dbname>
+
+    <version value="3"></version>
+
+    <list>
+        <mapping class="com.example.calendar.entity.Schedule"></mapping>
+    </list>
+</litepal>
