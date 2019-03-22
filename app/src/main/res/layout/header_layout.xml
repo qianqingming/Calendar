@@ -6,11 +6,10 @@
     <TextView
         android:id="@+id/tv_year"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/titleHeight"
         android:text="2019年3月"
         android:textSize="20sp"
-        android:textColor="#fff"
-        android:layout_marginTop="10dp"
+        android:textColor="#ffffff"
         android:background="@color/colorPrimary"
         android:gravity="center"/>
 </RelativeLayout>

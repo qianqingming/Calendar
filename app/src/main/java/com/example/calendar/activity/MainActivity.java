@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.calendar.R;
 import com.example.calendar.adapter.CalendarAdapter;
+import com.example.calendar.adapter.StickyItemDecoration;
 import com.example.calendar.entity.MyDate;
 import com.example.calendar.entity.Schedule;
 import com.example.calendar.utils.CalendarUtils;
@@ -63,6 +64,25 @@ public class MainActivity extends AppCompatActivity {
         calendarRecyclerView.setLayoutManager(layoutManager);
         //给RecyclerView添加适配器
         adapter = new CalendarAdapter(this,list);
+        //添加吸顶悬浮
+        calendarRecyclerView.addItemDecoration(new StickyItemDecoration(this, new StickyItemDecoration.DecorationCallback() {
+            @Override
+            public String getYearAndMonth(int position) {
+                if (list.get(position) instanceof String){
+                    return (String)list.get(position);
+                }
+                String year = null;
+                boolean flag = true;
+                while (flag){
+                    position--;
+                    if (list.get(position) instanceof String){
+                        year = (String) list.get(position);
+                        flag = false;
+                    }
+                }
+                return year;
+            }
+        }));
         calendarRecyclerView.setAdapter(adapter);
 
         //给RecyclerView添加滚动监听

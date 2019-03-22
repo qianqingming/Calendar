@@ -42,9 +42,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //Log.d("aaa","onCreateViewHolder————"+viewType);
         if (viewType == HEADER_TYPE){
-            return new HeaderHolder(LayoutInflater.from(mContext).inflate(R.layout.header_layout,null,false));
+            View view = LayoutInflater.from(mContext).inflate(R.layout.header_layout,null,false);
+            view.setTag(true);
+            return new HeaderHolder(view);
         }else {
-            return new DateHolder(LayoutInflater.from(mContext).inflate(R.layout.date_layout,null,false));
+            View view = LayoutInflater.from(mContext).inflate(R.layout.date_layout,null,false);
+            view.setTag(false);
+            return new DateHolder(view);
         }
     }
 
@@ -87,7 +91,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 public void onClick(View v) {
                     if (!"".equals(myDate.getDay())){
                         key = yearAndMonth + myDate.getDay() + "日";
-                        Toast.makeText(mContext, key,Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mContext, key,Toast.LENGTH_SHORT).show();
                         //改变选中日期的颜色
                         if (yearAndMonth.equals(CalendarUtils.YEARANDMONTH) && myDate.getDay().equals(CalendarUtils.DAY)){
                             if(last_choosed_view != null){
@@ -177,4 +181,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             todo = itemView.findViewById(R.id.tv_todo);
         }
     }
+
+
 }
